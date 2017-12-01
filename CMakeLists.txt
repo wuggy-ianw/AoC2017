@@ -4,3 +4,6 @@ project(AoC2017)
 set(CMAKE_CXX_STANDARD 11)
 
 include(cmake/googletest-build.cmake)
+enable_testing()
+
+add_subdirectory(day01)
