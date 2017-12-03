@@ -7,3 +7,4 @@ include(cmake/googletest-build.cmake)
 enable_testing()
 
 add_subdirectory(day01)
+add_subdirectory(day02)
