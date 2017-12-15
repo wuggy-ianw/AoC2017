@@ -42,6 +42,17 @@ namespace AOCUtils
     return values;
   }
 
+  // match a literal string (or fail very badly)
+  struct literal
+  {
+    explicit literal(const std::string& s) : s(s) {}
+    explicit literal(std::string&& s) : s(std::move(s)) {}
+    std::string s;
+  };
+
+  std::istream& operator>> (std::istream& s, const literal& l);
+
+
 } // namespace AOCUtils
 
 #endif //AOC2017_AOCUTILS_H
