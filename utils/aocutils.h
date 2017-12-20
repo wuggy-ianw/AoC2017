@@ -30,10 +30,10 @@ namespace AOCUtils
 
   // parse a line into typed items using a stringstream
   template<typename T>
-  std::vector< T > parseLine(const std::string& line)
+  std::vector< T > parseItem(const std::string& item)
   {
     std::vector< T > values;
-    std::istringstream ss(line);
+    std::istringstream ss(item);
     for (T val; ss >> val;)
     {
       values.push_back(val);
@@ -41,6 +41,21 @@ namespace AOCUtils
 
     return values;
   }
+
+  // parse a comma-separated line into typed items
+  template<typename T>
+  std::vector< T > parseCommaSeparatedItems(const std::string& line, const std::function<T(const std::string&)>& itemParser )
+  {
+    std::vector< T > values;
+    std::istringstream ss(line);
+    for (std::string s; std::getline(ss, s, ',');)
+    {
+      values.push_back(itemParser(s));
+    }
+
+    return values;
+  }
+
 
   // match a literal string (or fail very badly)
   struct literal
