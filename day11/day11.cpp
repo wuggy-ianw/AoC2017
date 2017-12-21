@@ -27,7 +27,7 @@ std::vector<std::string> Day11::parse_stream(std::istream &stream)
 {
   std::vector<std::vector<std::string>> parsed = AOCUtils::parseByLines<std::vector<std::string>>(stream,
                                                                                                   [](const std::string& s) -> std::vector<std::string>{
-                                                                                                    return AOCUtils::parseCommaSeparatedItems<std::string>(s, [](const std::string& s) -> std::string {return s;});
+                                                                                                    return AOCUtils::parseCommaSeparatedItemsFromString<std::string>(s, [](const std::string& s) -> std::string {return s;});
                                                                                                   });
   assert(parsed.size()==1);
   return parsed[0];

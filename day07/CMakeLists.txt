@@ -7,7 +7,7 @@ add_executable(TestAOCDay07
 target_link_libraries(TestAOCDay07
         gtest_main
         )
-add_test(TestAOCDay06 TestAOCDay07)
+add_test(TestAOCDay07 TestAOCDay07)
 
 add_executable(AOCDay07
         day07.cpp

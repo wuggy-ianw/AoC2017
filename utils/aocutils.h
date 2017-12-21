@@ -44,10 +44,9 @@ namespace AOCUtils
 
   // parse a comma-separated line into typed items
   template<typename T>
-  std::vector< T > parseCommaSeparatedItems(const std::string& line, const std::function<T(const std::string&)>& itemParser )
+  std::vector< T > parseCommaSeparatedItems(std::istream& ss, const std::function<T(const std::string&)>& itemParser )
   {
     std::vector< T > values;
-    std::istringstream ss(line);
     for (std::string s; std::getline(ss, s, ',');)
     {
       values.push_back(itemParser(s));
@@ -55,6 +54,15 @@ namespace AOCUtils
 
     return values;
   }
+
+  template<typename T>
+  std::vector< T > parseCommaSeparatedItemsFromString(const std::string& line, const std::function<T(const std::string&)>& itemParser )
+  {
+    std::istringstream ss(line);
+    return parseCommaSeparatedItems(ss, itemParser);
+  }
+
+
 
 
   // match a literal string (or fail very badly)
