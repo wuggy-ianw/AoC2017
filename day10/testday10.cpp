@@ -35,24 +35,24 @@ TEST(DAY10, TestKnotting)
 
 TEST(DAY10, TestHash1)
 {
-  std::string h = Day10::hash("");
+  std::string h = Day10::hash_string("");
   ASSERT_EQ(h, "a2582a3a0e66e6e86e3812dcb672a272");
 }
 
 TEST(DAY10, TestHash2)
 {
-  std::string h = Day10::hash("AoC 2017");
+  std::string h = Day10::hash_string("AoC 2017");
   ASSERT_EQ(h, "33efeb34ea91902bb2f59c9920caa6cd");
 }
 
 TEST(DAY10, TestHash3)
 {
-  std::string h = Day10::hash("1,2,3");
+  std::string h = Day10::hash_string("1,2,3");
   ASSERT_EQ(h, "3efbe78a8d82f29979031a4aa0b16a9d");
 }
 
 TEST(DAY10, TestHash4)
 {
-  std::string h = Day10::hash("1,2,4");
+  std::string h = Day10::hash_string("1,2,4");
   ASSERT_EQ(h, "63960835bcdc130f0b66d7ff4f6a5a8e");
 }

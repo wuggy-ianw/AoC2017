@@ -34,7 +34,7 @@ void Day10::knot(const std::vector<std::size_t>& lengths, std::vector<int>& stri
   for (std::size_t l : lengths) knot(l, string, pos, skip);
 }
 
-std::string Day10::hash(const std::string& txt)
+Day10::hash_value Day10::hash(const std::string& txt)
 {
   // make a string containing 0-255
   std::vector<int> string(256);
@@ -53,17 +53,28 @@ std::string Day10::hash(const std::string& txt)
   std::size_t skip = 0;
   for (int i=0;i<64;i++) knot(lengths, string, pos, skip);
 
-  // densify the hash and convert it to a stringified hash in hex
-  std::ostringstream oss;
+  // densify the hash
+  hash_value value = {0};
   auto stringiter = string.begin();
-  for (int h=0; h<16; h++)
+  for (int h=7; h>=0; h--)
   {
-    uint8_t val = 0;
-    for (int i=0; i<16; i++, stringiter++) val ^= *stringiter;
-
-    oss << std::setw(2) << std::setfill('0') << std::hex << +val;  // use the unary-+ trick for type promotion!
+    for (int i = 0; i < 16; i++, stringiter++) value.high ^= uint64_t(*stringiter) << (8*h);
+  }
+  for (int h=7; h>=0; h--)
+  {
+    for (int i = 0; i < 16; i++, stringiter++) value.low ^= uint64_t(*stringiter) << (8*h);
   }
 
+  return value;
+}
+
+std::string Day10::hash_string(const std::string& txt)
+{
+  // get the hash and convert it to a stringified hash in hex
+  hash_value value = hash(txt);
+  std::ostringstream oss;
+  oss << std::hex << std::setfill('0') << std::setw(16) << value.high ;
+  oss << std::hex << std::setfill('0') << std::setw(16) << value.low;
   return oss.str();
 }
 
@@ -80,5 +91,5 @@ int Day10::solve_part1(const std::vector<std::size_t>& lengths)
 }
 std::string Day10::solve_part2(const std::string& txt)
 {
-  return hash(txt);
+  return hash_string(txt);
 }
