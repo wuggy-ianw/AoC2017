@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.9)
 project(AoC2017)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # google test
 include(cmake/googletest-build.cmake)
@@ -25,4 +25,6 @@ add_subdirectory(day13)
 add_subdirectory(day14)
 add_subdirectory(day15)
 add_subdirectory(day16)
+add_subdirectory(day17)
+add_subdirectory(day18)
 
