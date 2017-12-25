@@ -1,0 +1,9 @@
+#ifndef AOC2017_DAY$DAYNAME_H
+#define AOC2017_DAY$DAYNAME_H
+
+namespace Day$DAYNAME
+{
+  int solve_part1();
+}
+
+#endif //AOC2017_DAY$DAYNAME_H

@@ -1,0 +1,6 @@
+#include "day$DAYNAME.h"
+
+int Day$DAYNAME::solve_part1()
+{
+  return 0;
+}

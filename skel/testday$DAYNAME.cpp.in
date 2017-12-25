@@ -1,0 +1,8 @@
+#include "gtest/gtest.h"
+#include "day$DAYNAME.h"
+
+TEST(DAY$DAYNAME, TestSolvePart1)
+{
+  int actual = Day$DAYNAME::solve_part1();
+  ASSERT_EQ(0, actual);
+}

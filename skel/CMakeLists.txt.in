@@ -1,0 +1,14 @@
+
+add_executable(TestAOCDay$DAYNAME
+        day$DAYNAME.cpp
+        testday$DAYNAME.cpp
+        )
+target_link_libraries(TestAOCDay$DAYNAME
+        gtest_main
+        )
+add_test(TestAOCDay$DAYNAME TestAOCDay$DAYNAME)
+
+add_executable(AOCDay$DAYNAME
+        day$DAYNAME.cpp
+        main.cpp
+        )

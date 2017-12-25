@@ -1,0 +1,8 @@
+#include "day$DAYNAME.h"
+#include <iostream>
+
+int main(void)
+{
+  std::cout << Day$DAYNAME::solve_part1() << std::endl;
+  return 0;
+}
