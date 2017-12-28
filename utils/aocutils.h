@@ -42,12 +42,12 @@ namespace AOCUtils
     return values;
   }
 
-  // parse a comma-separated line into typed items
-  template<typename T>
-  std::vector< T > parseCommaSeparatedItems(std::istream& ss, const std::function<T(const std::string&)>& itemParser )
+  // parse a delimeter-separated line into typed items
+  template<typename T, char Delimeter>
+  std::vector< T > parseDelimeterSeparatedItems(std::istream& ss, const std::function<T(const std::string&)>& itemParser )
   {
     std::vector< T > values;
-    for (std::string s; std::getline(ss, s, ',');)
+    for (std::string s; std::getline(ss, s, Delimeter);)
     {
       values.push_back(itemParser(s));
     }
@@ -55,11 +55,25 @@ namespace AOCUtils
     return values;
   }
 
+  template<typename T, char Delimeter>
+  std::vector< T > parseDelimeterSeparatedItemsFromString(const std::string& line, const std::function<T(const std::string&)>& itemParser )
+  {
+    std::istringstream ss(line);
+    return parseDelimeterSeparatedItems<T, Delimeter>(ss, itemParser);
+  }
+
+
+  // parse a comma-separated line into typed items
+  template<typename T>
+  std::vector< T > parseCommaSeparatedItems(std::istream& ss, const std::function<T(const std::string&)>& itemParser )
+  {
+    return parseDelimeterSeparatedItems<T, ','>(ss, itemParser);
+  }
+
   template<typename T>
   std::vector< T > parseCommaSeparatedItemsFromString(const std::string& line, const std::function<T(const std::string&)>& itemParser )
   {
-    std::istringstream ss(line);
-    return parseCommaSeparatedItems(ss, itemParser);
+    return parseDelimeterSeparatedItemsFromString<T, ','>(line, itemParser);
   }
 
 
